@@ -1,0 +1,45 @@
+
+header {
+    background: navy;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.container {
+    width: 85%;
+    margin: 30px auto;
+}
+
+.welcome {
+    background: #dbeafe;
+    padding: 35px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #cccccc;
+}
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+footer {
+    background: navy;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}

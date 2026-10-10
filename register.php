@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     <button name="submit">Register</button>
 </form>
 
-<a href="index.php">Home</a>
+<a href="index.html">Home</a>
 
 </body>
 </html>

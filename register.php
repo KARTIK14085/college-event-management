@@ -2,47 +2,93 @@
 <?php
 include "db.php";
 
+$message = "";
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
+    $student_id = $_POST['student_id'];
     $email = $_POST['email'];
+    $section = $_POST['section'];
+    $semester = $_POST['semester'];
     $event = $_POST['event'];
 
     $sql = "INSERT INTO registrations
-            (student, email, event_name)
-            VALUES ('$name', '$email', '$event')";
+    (student, student_id, email, section, semester, event_name)
+    VALUES (?, ?, ?, ?, ?, ?)";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Registration Successful!";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $stmt, "ssssss",
+        $name, $student_id, $email,
+        $section, $semester, $event
+    );
+
+    if (mysqli_stmt_execute($stmt)) {
+        $message = "Registration Successful!";
     } else {
-        echo "Registration Failed!";
+        $message = "Registration Failed!";
     }
 }
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Registration</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
 
-<h1>Student Registration</h1>
+<div class="container">
+    <h1>College Event Registration</h1>
 
-<form method="post">
-    Name: <input type="text" name="name" required><br><br>
-    Email: <input type="email" name="email" required><br><br>
+    <form method="post">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
 
-    Event:
-    <select name="event">
-        <option>Tech Fest</option>
-        <option>Cultural Fest</option>
-        <option>Sports Day</option>
-    </select><br><br>
+        <label>Student ID</label>
+        <input type="text" name="student_id" placeholder="Enter student ID" required>
 
-    <button name="submit">Register</button>
-</form>
+        <label>Gmail</label>
+        <input type="email" name="email" placeholder="Enter your Gmail" required>
 
-<a href="index.html">Home</a>
+        <label>Section</label>
+        <select name="section" required>
+            <option value="">Select Section</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+
+        <label>Semester</label>
+        <select name="semester" required>
+            <option value="">Select Semester</option>
+            <option>1st Semester</option>
+            <option>2nd Semester</option>
+            <option>3rd Semester</option>
+            <option>4th Semester</option>
+            <option>5th Semester</option>
+            <option>6th Semester</option>
+            <option>7th Semester</option>
+            <option>8th Semester</option>
+        </select>
+
+        <label>Select Event</label>
+        <select name="event" required>
+            <option value="">Select Event</option>
+            <option>Tech Fest</option>
+            <option>Cultural Fest</option>
+            <option>Sports Day</option>
+        </select>
+
+        <button type="submit" name="submit">Register Now</button>
+
+        <p><?php echo htmlspecialchars($message); ?></p>
+    </form>
+
+    <a href="index.php">Home</a>
+    <a href="admin.php">Admin Panel</a>
+</div>
 
 </body>
 </html>

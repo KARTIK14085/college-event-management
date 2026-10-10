@@ -1,74 +1,207 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>College Event Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus University | Campus Events</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-<header>
-    <h1>College Event Management System</h1>
-    <p>Manage and participate in college events</p>
+<header class="navbar">
+    <h2>Colledge Event managment system</h2>
+
+    <nav>
+        <a href="#events">Events</a>
+        <a href="#categories">Categories</a>
+        <a href="admin.php">Admin Panel</a>
+    </nav>
+
+    <a href="register.php" class="nav-button">Register Now</a>
 </header>
 
-<nav>
-    <a href="index.php">Home</a>
-    <a href="#events">View Events</a>
-    <a href="register.php">Register</a>
-    <a href="admin.php">Admin Panel</a>
-</nav>
+<section class="hero">
+    <div class="hero-content">
+        <span class="tag">INDUS UNIVERSITY • CAMPUS LIFE</span>
 
-<div class="container">
+        <h1>Discover & Register for
+            <span>Campus Events.</span>
+        </h1>
 
-    <section class="welcome">
-        <h2>Welcome to Our College</h2>
         <p>
-            Explore college events, participate in activities,
-            and register for your favourite events.
+            Explore exciting events at Indus University.
+            Join technical fests, cultural programs,
+            workshops and sports activities.
         </p>
-        <a class="btn" href="#events">Explore Events</a>
-    </section>
 
-    <section id="events">
-        <h2>Our Events</h2>
+        <form class="search-box" onsubmit="searchEvents(event)">
+            <input type="text" id="search"
+                   placeholder="Search events, fests, workshops...">
+            <button type="submit">Search</button>
+        </form>
 
-        <div class="card">
-            <h3>Tech Fest</h3>
-            <p>Technical competitions and coding activities.</p>
-            <a class="btn" href="register.php">Register</a>
+        <div class="stats">
+            <div><h2>10+</h2><p>Campus Events</p></div>
+            <div><h2>500+</h2><p>Students</p></div>
+            <div><h2>4</h2><p>Categories</p></div>
+        </div>
+    </div>
+
+    <div class="featured">
+        <div class="featured-top">
+            <span class="tag light">FEATURED EVENT</span>
+            <h2>Indus Tech Fest</h2>
+            <p>Innovation • Technology • Creativity</p>
         </div>
 
-        <div class="card">
-            <h3>Cultural Fest</h3>
-            <p>Dance, singing and cultural performances.</p>
-            <a class="btn" href="register.php">Register</a>
+        <div class="featured-bottom">
+            <p>Explore new ideas and showcase your talent.</p>
+            <a href="register.php" class="button">Register Now →</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="events-section" id="events">
+    <div class="section-heading">
+        <div>
+            <span class="tag">WHAT'S HAPPENING</span>
+            <h2>Upcoming Events</h2>
+        </div>
+    </div>
+
+    <div class="categories" id="categories">
+        <button class="active" onclick="filterEvents('all', this)">All</button>
+        <button onclick="filterEvents('tech', this)">Technical</button>
+        <button onclick="filterEvents('cultural', this)">Cultural</button>
+        <button onclick="filterEvents('sports', this)">Sports</button>
+        <button onclick="filterEvents('workshop', this)">Workshops</button>
+    </div>
+
+    <div class="event-grid">
+
+        <div class="event-card" data-category="tech">
+            <div class="event-image tech-image">
+                <span>TECHNICAL</span>
+                <h2>01</h2>
+            </div>
+            <div class="event-info">
+                <p class="event-type">TECH FEST</p>
+                <h3>Indus Tech Fest</h3>
+                <p>Explore technology, coding and innovation.</p>
+                <div class="event-footer">
+                    <span>Campus Event</span>
+                    <a href="register.php">Register →</a>
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Sports Day</h3>
-            <p>Sports competitions and team activities.</p>
-            <a class="btn" href="register.php">Register</a>
+        <div class="event-card" data-category="cultural">
+            <div class="event-image cultural-image">
+                <span>CULTURAL</span>
+                <h2>02</h2>
+            </div>
+            <div class="event-info">
+                <p class="event-type">CULTURAL FEST</p>
+                <h3>Indus Utsav</h3>
+                <p>Celebrate music, dance and creativity.</p>
+                <div class="event-footer">
+                    <span>Campus Event</span>
+                    <a href="register.php">Register →</a>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <section class="card">
-        <h2>Student Registration</h2>
-        <p>Register for a college event using the form.</p>
-        <a class="btn" href="register.php">Open Registration</a>
-    </section>
+        <div class="event-card" data-category="sports">
+            <div class="event-image sports-image">
+                <span>SPORTS</span>
+                <h2>03</h2>
+            </div>
+            <div class="event-info">
+                <p class="event-type">SPORTS DAY</p>
+                <h3>Indus Sports Meet</h3>
+                <p>Show your skills and team spirit.</p>
+                <div class="event-footer">
+                    <span>Campus Event</span>
+                    <a href="register.php">Register →</a>
+                </div>
+            </div>
+        </div>
 
-    <section class="card">
-        <h2>Admin Panel</h2>
-        <p>View the list of students registered for events.</p>
-        <a class="btn" href="admin.php">Open Admin Panel</a>
-    </section>
+        <div class="event-card" data-category="workshop">
+            <div class="event-image workshop-image">
+                <span>WORKSHOP</span>
+                <h2>04</h2>
+            </div>
+            <div class="event-info">
+                <p class="event-type">LEARNING</p>
+                <h3>Innovation Workshop</h3>
+                <p>Develop practical and professional skills.</p>
+                <div class="event-footer">
+                    <span>Campus Event</span>
+                    <a href="register.php">Register →</a>
+                </div>
+            </div>
+        </div>
 
-</div>
+    </div>
+
+    <p id="noEvents" class="no-events" style="display:none">
+        No matching events found.
+    </p>
+</section>
 
 <footer>
-    <p>College Event Management System | Mini Project</p>
+    <h2>Indus Events</h2>
+    <p>College Event Management System</p>
+    <p>Indus University | Student Campus Activities</p>
+    <a href="register.php">Student Registration</a>
+    <a href="admin.php">Admin Panel</a>
+    <p class="copyright">© 2026 Indus Events. College Project.</p>
 </footer>
+
+<script>
+
+function filterEvents(category, button) {
+    let events = document.getElementsByClassName("event-card");
+
+    for (let i = 0; i < events.length; i++) {
+        if (category == "all" ||
+            events[i].getAttribute("data-category") == category) {
+            events[i].style.display = "block";
+        } else {
+            events[i].style.display = "none";
+        }
+    }
+
+    let buttons = document.querySelectorAll(".categories button");
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    button.classList.add("active");
+}
+
+function searchEvents(event) {
+    event.preventDefault();
+
+    let search = document.getElementById("search").value.toLowerCase();
+    let events = document.getElementsByClassName("event-card");
+
+    for (let i = 0; i < events.length; i++) {
+        let name = events[i].innerText.toLowerCase();
+
+        if (name.includes(search)) {
+            events[i].style.display = "block";
+        } else {
+            events[i].style.display = "none";
+        }
+    }
+}
+</script>
+
 
 </body>
 </html>

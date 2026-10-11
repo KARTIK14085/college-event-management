@@ -1,28 +1,32 @@
 
-body {
-    font-family: Arial;
-    text-align: center;
-    background: lightblue;
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
 }
+
+th {
+    background: #f47716;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
 
 h1 {
-    background: navy;
+    background: #f47716;
     color: white;
     padding: 20px;
-}
-
-form {
-    background: white;
-    padding: 20px;
-    display: inline-block;
-}
-
-button {
-    background: blue;
-    color: white;
-    padding: 10px;
 }
 
 a {
-    margin: 10px;
+    color: #f47716;
+    text-decoration: none;
+    font-size: 18px;
 }
